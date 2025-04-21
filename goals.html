@@ -2,107 +2,84 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <title>اختيار الهدف - مستقبلي الآن</title>
+  <title>اختر هدفك</title>
   <style>
     body {
       margin: 0;
       font-family: 'Cairo', sans-serif;
-      color: #fff;
+      background-color: white;
       text-align: center;
-      background-color: black;
-    }
-
-    .stars {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      top: 0; left: 0;
-      background: url('https://i.ibb.co/VDCWDzw/stars-bg.png') repeat;
-      animation: moveStars 100s linear infinite;
-      z-index: -1;
-    }
-
-    @keyframes moveStars {
-      from {background-position: 0 0;}
-      to {background-position: -10000px 5000px;}
+      color: #333;
     }
 
     h1 {
-      margin-top: 50px;
-      font-size: 36px;
-      color: #FFD700;
+      margin-top: 40px;
+      font-size: 40px;
+      color: #FF9800;
     }
 
-    .buttons {
-      margin: 30px auto;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-      max-width: 600px;
-    }
-
-    .buttons button {
-      background: #FF9800;
-      border: none;
+    .goal-button {
+      margin: 10px;
       padding: 15px 30px;
-      font-size: 18px;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .buttons button:hover {
-      background: #FFC107;
-    }
-
-    input[type="text"] {
-      padding: 15px;
-      font-size: 16px;
-      border: none;
-      border-radius: 8px;
-      margin-top: 20px;
-      width: 250px;
-    }
-
-    .next-button {
-      display: block;
-      margin: 30px auto;
-      padding: 15px 40px;
       background: #FF9800;
       border: none;
       border-radius: 8px;
       font-size: 20px;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .goal-button:hover {
+      background: #FFC107;
+    }
+
+    .custom-goal {
+      margin-top: 20px;
+      padding: 10px;
+      width: 250px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 18px;
+    }
+
+    .next-button {
+      margin-top: 20px;
+      padding: 15px 50px;
+      background: #4CAF50;
+      border: none;
+      border-radius: 8px;
+      font-size: 22px;
+      color: white;
       cursor: pointer;
       transition: 0.3s;
     }
 
     .next-button:hover {
-      background: #FFC107;
+      background: #45a049;
     }
 
   </style>
 </head>
 <body>
 
-  <div class="stars"></div>
-
   <h1>اختر هدفك</h1>
 
-  <div class="buttons">
-    <button>الصحة</button>
-    <button>النجاح الدراسي</button>
-    <button>تنمية الذات</button>
-    <button>العلاقات</button>
-    <button>السفر</button>
-    <button>العمل</button>
-    <button>الإدخار</button>
-    <button>الإستقرار</button>
-    <button>السعادة</button>
-    <button>آخر</button>
+  <div>
+    <button class="goal-button">الصحة</button>
+    <button class="goal-button">النجاح الدراسي</button>
+    <button class="goal-button">تنمية الذات</button>
+    <button class="goal-button">العلاقات</button>
+    <button class="goal-button">السفر</button>
+    <button class="goal-button">العمل</button>
+    <button class="goal-button">الادخار</button>
+    <button class="goal-button">الإستقرار</button>
+    <button class="goal-button">السعادة</button>
   </div>
 
-  <input type="text" placeholder="اكتب هدفك هنا">
+  <div>
+    <input type="text" class="custom-goal" placeholder="أكتب هدفك هنا">
+  </div>
 
   <button class="next-button">التالي</button>
 
