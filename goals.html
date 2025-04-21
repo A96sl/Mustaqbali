@@ -2,7 +2,7 @@
 <html lang="ar">
 <head>
   <meta charset="UTF-8">
-  <title>اختر هدفك</title>
+  <title>اختر هدفك | Choose Your Goal</title>
   <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
   <style>
     body {
@@ -52,42 +52,84 @@
     .next-btn:hover {
       background-color: #2e7d32;
     }
+    .lang-btn {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+    }
   </style>
   <script>
+    function toggleLanguage() {
+      const currentLang = localStorage.getItem("lang") || "ar";
+      const newLang = currentLang === "ar" ? "en" : "ar";
+      localStorage.setItem("lang", newLang);
+      updateText();
+    }
+
+    function updateText() {
+      const lang = localStorage.getItem("lang") || "ar";
+      document.documentElement.lang = lang;
+
+      document.getElementById("pageTitle").innerText = 
+        lang === "ar" ? "اختر هدفك" : "Choose Your Goal";
+
+      document.getElementById("goalInput").placeholder = 
+        lang === "ar" ? "اكتب هدفك هنا" : "Write your goal here";
+
+      document.getElementById("nextBtn").innerText = 
+        lang === "ar" ? "التالي" : "Next";
+
+      const goalTexts = {
+        "الصحة": "Health", "النجاح الدراسي": "Study Success",
+        "تنمية الذات": "Self Development", "العلاقات": "Relationships",
+        "السفر": "Travel", "العمل": "Work", "الإنجاز": "Achievement",
+        "الإستقرار": "Stability", "السعادة": "Happiness"
+      };
+
+      document.querySelectorAll(".goal-btn").forEach(btn => {
+        const text = btn.getAttribute("data-text");
+        btn.innerText = (lang === "ar") ? text : goalTexts[text];
+      });
+    }
+
     function fillGoal(text) {
-      document.getElementById('customGoal').value = text;
+      document.getElementById('goalInput').value = text;
     }
 
     function goToDetails() {
-      const goal = document.getElementById('customGoal').value;
+      const goal = document.getElementById('goalInput').value;
       if (goal.trim() === "") {
-        alert("يرجى اختيار أو كتابة هدفك");
+        alert(localStorage.getItem("lang") === "ar" ? "يرجى اختيار أو كتابة هدفك" : "Please choose or write your goal");
         return;
       }
       localStorage.setItem("selectedGoal", goal);
       window.location.href = "details.html";
     }
+
+    window.onload = updateText;
   </script>
 </head>
 <body>
 
-  <h1>اختر هدفك</h1>
+  <button class="lang-btn" onclick="toggleLanguage()">EN / ع</button>
+
+  <h1 id="pageTitle">اختر هدفك</h1>
 
   <div>
-    <button class="goal-btn" onclick="fillGoal('الصحة')">الصحة</button>
-    <button class="goal-btn" onclick="fillGoal('النجاح الدراسي')">النجاح الدراسي</button>
-    <button class="goal-btn" onclick="fillGoal('تنمية الذات')">تنمية الذات</button>
-    <button class="goal-btn" onclick="fillGoal('العلاقات')">العلاقات</button>
-    <button class="goal-btn" onclick="fillGoal('السفر')">السفر</button>
-    <button class="goal-btn" onclick="fillGoal('العمل')">العمل</button>
-    <button class="goal-btn" onclick="fillGoal('الإنجاز')">الإنجاز</button>
-    <button class="goal-btn" onclick="fillGoal('الإستقرار')">الإستقرار</button>
-    <button class="goal-btn" onclick="fillGoal('السعادة')">السعادة</button>
-  </div>
+    <button class="goal-btn" data-text="الصحة" onclick="fillGoal(this.innerText)">الصحة</button>
+    <button class="goal-btn" data-text="النجاح الدراسي" onclick="fillGoal(this.innerText)">النجاح الدراسي</button>
+    <button class="goal-btn" data-text="تنمية الذات" onclick="fillGoal(this.innerText)">تنمية الذات</button>
+    <button class="goal-btn" data-text="العلاقات" onclick="fillGoal(this.innerText)">العلاقات</button>
+    <button class="goal-btn" data-text="السفر" onclick="fillGoal(this.innerText)">السفر</button>
+    <button class="goal-btn" data-text="العمل" onclick="fillGoal(this.innerText)">العمل</button>
+    <button class="goal-btn" data-text="الإنجاز" onclick="fillGoal(this.innerText)">الإنجاز</button>
+    <button class="goal-btn" data-text="الإستقرار" onclick="fillGoal(this.innerText)">الإستقرار</button>
+    <button class="goal-btn" data-text="السعادة" onclick="fillGoal(this.innerText)">السعادة</button>
+  </div
+    
+  <input type="text" id="goalInput" placeholder="اكتب هدفك هنا"><br>
 
-  <input type="text" id="customGoal" placeholder="اكتب هدفك هنا"><br>
-
-  <button class="next-btn" onclick="goToDetails()">التالي</button>
+  <button class="next-btn" id="nextBtn" onclick="goToDetails()">التالي</button>
 
 </body>
 </html>
