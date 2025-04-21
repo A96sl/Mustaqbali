@@ -1,93 +1,83 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <title>أهدافك</title>
+  <title>أهدافك - MustaqbaliNow</title>
   <style>
     body {
-      margin: 0;
-      background: url('https://alhayaa.net/wp-content/uploads/2024/12/sky-background.jpg') no-repeat center center fixed;
-      background-size: cover;
-      color: white;
+      background-color: #0A0A23;
+      color: #FFD700;
       font-family: 'Cairo', sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
+      text-align: center;
+      padding: 50px;
     }
-    h2 {
-      font-size: 40px;
+    h1 {
+      font-size: 36px;
       margin-bottom: 20px;
-      background: linear-gradient(45deg, #6A1B9A, #F48FB1);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
     }
-    select, input, button {
-      padding: 12px 20px;
+    button {
+      background-color: #FFD700;
+      color: #0A0A23;
+      border: none;
+      padding: 15px 30px;
       margin: 10px;
       font-size: 18px;
-      border-radius: 20px;
-      border: none;
-      outline: none;
-    }
-    .custom-goal {
-      display: none;
-      flex-direction: column;
-      align-items: center;
-    }
-    .btn {
-      background: linear-gradient(45deg, #F48FB1, #6A1B9A);
-      color: white;
+      border-radius: 8px;
       cursor: pointer;
-      transition: 0.3s;
     }
-    .btn:hover {
-      transform: scale(1.05);
+    input[type="text"] {
+      display: none;
+      margin-top: 20px;
+      padding: 10px;
+      font-size: 18px;
+      width: 300px;
+      border-radius: 5px;
+      border: 1px solid #FFD700;
+      background-color: #222;
+      color: #FFD700;
     }
   </style>
 </head>
 <body>
 
-  <h2>اختر هدفك</h2>
+  <h1>اختر هدفك</h1>
 
-  <select id="goalSelect" onchange="checkCustomOption()">
-    <option value="">اختر...</option>
-    <option value="النجاح">النجاح</option>
-    <option value="الصحة">الصحة</option>
-    <option value="السعادة">السعادة</option>
-    <option value="آخر">آخر...</option>
-  </select>
+  <button onclick="selectGoal('نجاح دراسي')">نجاح دراسي</button>
+  <button onclick="selectGoal('صحة ولياقة')">صحة ولياقة</button>
+  <button onclick="selectGoal('وظيفة أحلام')">وظيفة أحلام</button>
+  <button onclick="showOther()">آخر</button>
 
-  <div class="custom-goal" id="customGoalDiv">
-    <input type="text" id="customGoalInput" placeholder="اكتب هدفك هنا">
+  <div id="otherGoal">
+    <input type="text" id="customGoal" placeholder="اكتب هدفك هنا">
   </div>
 
-  <button class="btn" onclick="submitGoal()">متابعة</button>
+  <br>
+  <button onclick="goNext()">التالي</button>
 
   <script>
-    function checkCustomOption() {
-      const select = document.getElementById('goalSelect');
-      const customDiv = document.getElementById('customGoalDiv');
-      if (select.value === "آخر") {
-        customDiv.style.display = "flex";
-      } else {
-        customDiv.style.display = "none";
-      }
+    let selectedGoal = '';
+
+    function selectGoal(goal) {
+      selectedGoal = goal;
+      document.getElementById("customGoal").style.display = "none";
+      alert("تم اختيار: " + goal);
     }
 
-    function submitGoal() {
-      const select = document.getElementById('goalSelect');
-      const customInput = document.getElementById('customGoalInput');
-      let goal = select.value;
-      if (goal === "آخر") {
-        goal = customInput.value;
+    function showOther() {
+      selectedGoal = '';
+      document.getElementById("customGoal").style.display = "block";
+    }
+
+    function goNext() {
+      if(document.getElementById("customGoal").style.display === "block") {
+        selectedGoal = document.getElementById("customGoal").value;
       }
-      if (goal) {
-        alert("هدفك هو: " + goal);
-        // أو يمكنك تحويله لصفحة أخرى لاحقًا
+      if(selectedGoal === '') {
+        alert("من فضلك اختر أو اكتب هدفك أولاً.");
       } else {
-        alert("رجاءً اختر أو اكتب هدفك!");
+        alert("رائع! هدفك: " + selectedGoal);
+        // هنا ممكن ننقله لصفحة أخرى أو نحفظ الهدف
+        window.location.href = "index.html";
       }
     }
   </script>
