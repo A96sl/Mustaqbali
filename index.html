@@ -2,7 +2,7 @@
 <html lang="ar">
 <head>
   <meta charset="UTF-8">
-  <title>مستقبلي الآن</title>
+  <title>مستقبلي الآن | My Future Now</title>
   <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
   <style>
     body {
@@ -16,7 +16,7 @@
       font-size: 36px;
       margin-bottom: 30px;
     }
-    a {
+    a, button {
       background-color: #1e88e5;
       color: white;
       padding: 15px 30px;
@@ -24,16 +24,49 @@
       border-radius: 8px;
       font-size: 20px;
       transition: 0.3s;
+      border: none;
+      margin: 10px;
     }
-    a:hover {
+    a:hover, button:hover {
       background-color: #1565c0;
+    }
+    .lang-btn {
+      position: absolute;
+      top: 20px;
+      left: 20px;
     }
   </style>
 </head>
 <body>
 
-  <h1>مرحبًا بك في مستقبلي الآن</h1>
-  <a href="goals.html">ابدأ الآن</a>
+  <button class="lang-btn" onclick="toggleLanguage()">EN / ع</button>
+
+  <h1 id="title">مرحبًا بك في مستقبلي الآن</h1>
+  <a href="goals.html" id="startBtn">ابدأ الآن</a>
+
+  <script>
+    function toggleLanguage() {
+      const currentLang = localStorage.getItem("lang") || "ar";
+      const newLang = currentLang === "ar" ? "en" : "ar";
+      localStorage.setItem("lang", newLang);
+      updateText();
+    }
+
+    function updateText() {
+      const lang = localStorage.getItem("lang") || "ar";
+      document.documentElement.lang = lang;
+
+      if (lang === "ar") {
+        document.getElementById("title").innerText = "مرحبًا بك في مستقبلي الآن";
+        document.getElementById("startBtn").innerText = "ابدأ الآن";
+      } else {
+        document.getElementById("title").innerText = "Welcome to My Future Now";
+        document.getElementById("startBtn").innerText = "Start Now";
+      }
+    }
+
+    updateText();
+  </script>
 
 </body>
 </html>
