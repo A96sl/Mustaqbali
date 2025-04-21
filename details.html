@@ -2,7 +2,7 @@
 <html lang="ar">
 <head>
   <meta charset="UTF-8">
-  <title>معلوماتك</title>
+  <title>معلوماتك | Your Info</title>
   <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
   <style>
     body {
@@ -38,26 +38,54 @@
     .next-btn:hover {
       background-color: #2e7d32;
     }
+    .lang-btn {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+    }
   </style>
 </head>
 <body>
 
-  <h1>معلوماتك الشخصية</h1>
+  <button class="lang-btn" onclick="toggleLanguage()">EN / ع</button>
+
+  <h1 id="pageTitle">معلوماتك الشخصية</h1>
 
   <input type="text" id="name" placeholder="ادخل اسمك"><br>
   <input type="date" id="birthDate"><br>
   <input type="file" id="photo" accept="image/*"><br>
 
-  <button class="next-btn" onclick="saveDetails()">التالي</button>
+  <button class="next-btn" onclick="saveDetails()" id="nextBtn">التالي</button>
 
   <script>
+    function toggleLanguage() {
+      const currentLang = localStorage.getItem("lang") || "ar";
+      const newLang = currentLang === "ar" ? "en" : "ar";
+      localStorage.setItem("lang", newLang);
+      updateText();
+    }
+
+    function updateText() {
+      const lang = localStorage.getItem("lang") || "ar";
+      document.documentElement.lang = lang;
+
+      document.getElementById("pageTitle").innerText = 
+        lang === "ar" ? "معلوماتك الشخصية" : "Your Personal Info";
+
+      document.getElementById("name").placeholder = 
+        lang === "ar" ? "ادخل اسمك" : "Enter your name";
+
+      document.getElementById("nextBtn").innerText = 
+        lang === "ar" ? "التالي" : "Next";
+    }
+
     function saveDetails() {
       const name = document.getElementById('name').value;
       const birthDate = document.getElementById('birthDate').value;
       const photo = document.getElementById('photo').files[0];
 
       if (!name  !birthDate  !photo) {
-        alert("يرجى تعبئة كل الحقول");
+        alert(localStorage.getItem("lang") === "ar" ? "يرجى تعبئة كل الحقول" : "Please fill in all fields");
         return;
       }
 
@@ -65,8 +93,10 @@
       localStorage.setItem("birthDate", birthDate);
       localStorage.setItem("photoName", photo.name);
 
-      alert("تم الحفظ — يمكن الانتقال للخطوة التالية!");
+      alert(localStorage.getItem("lang") === "ar" ? "تم الحفظ!" : "Saved successfully!");
     }
+
+    updateText();
   </script>
 
 </body>
