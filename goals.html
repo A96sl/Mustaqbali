@@ -2,85 +2,123 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <title>أهدافك - MustaqbaliNow</title>
+  <title>اختيار الهدف — مستقبلي الآن</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@600&display=swap');
+
     body {
-      background-color: #0A0A23;
-      color: #FFD700;
+      background-color: #0a0a23;
+      color: #fff;
       font-family: 'Cairo', sans-serif;
       text-align: center;
       padding: 50px;
+      margin: 0;
+      overflow: hidden;
     }
+
     h1 {
-      font-size: 36px;
-      margin-bottom: 20px;
+      font-size: 45px;
+      margin-bottom: 40px;
+      color: #ffd700;
+      animation: fadeIn 2s ease;
     }
-    button {
-      background-color: #FFD700;
-      color: #0A0A23;
-      border: none;
-      padding: 15px 30px;
+
+    .option {
+      background-color: #ffd700;
+      color: #0a0a23;
+      padding: 15px 25px;
       margin: 10px;
-      font-size: 18px;
-      border-radius: 8px;
+      border: none;
+      border-radius: 10px;
+      font-size: 22px;
       cursor: pointer;
+      animation: fadeIn 3s ease;
+      transition: 0.3s;
     }
-    input[type="text"] {
-      display: none;
+
+    .option:hover {
+      background-color: #ffcc00;
+      transform: scale(1.05);
+    }
+
+    .other-input {
       margin-top: 20px;
-      padding: 10px;
-      font-size: 18px;
-      width: 300px;
-      border-radius: 5px;
-      border: 1px solid #FFD700;
-      background-color: #222;
-      color: #FFD700;
+      animation: fadeIn 3.5s ease;
     }
+
+    .other-input input {
+      padding: 12px;
+      font-size: 20px;
+      border-radius: 10px;
+      border: none;
+      outline: none;
+      width: 250px;
+      text-align: center;
+    }
+
+    .btn-next {
+      background-color: #ffd700;
+      color: #0a0a23;
+      padding: 15px 35px;
+      margin-top: 40px;
+      border: none;
+      border-radius: 10px;
+      font-size: 22px;
+      cursor: pointer;
+      animation: fadeIn 4s ease;
+    }
+
+    .btn-next:hover {
+      background-color: #ffcc00;
+      transform: scale(1.05);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* خلفية نجوم */
+    .stars {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0; left: 0;
+      background: url('https://i.postimg.cc/D0wVK7ZB/stars-bg.png') repeat;
+      animation: moveStars 100s linear infinite;
+      z-index: -1;
+    }
+
+    @keyframes moveStars {
+      from {background-position: 0 0;}
+      to {background-position: 10000px 5000px;}
+    }
+
   </style>
 </head>
 <body>
 
+<div class="stars"></div>
+
   <h1>اختر هدفك</h1>
 
-  <button onclick="selectGoal('نجاح دراسي')">نجاح دراسي</button>
-  <button onclick="selectGoal('صحة ولياقة')">صحة ولياقة</button>
-  <button onclick="selectGoal('وظيفة أحلام')">وظيفة أحلام</button>
-  <button onclick="showOther()">آخر</button>
+  <button class="option">الصحة</button>
+  <button class="option">النجاح الدراسي</button>
+  <button class="option">تنمية الذات</button>
+  <button class="option">العلاقات</button>
+  <button class="option">السفر</button>
+  <button class="option">العمل</button>
+  <button class="option">الادخار</button>
+  <button class="option">الاستقرار</button>
+  <button class="option">السعادة</button>
 
-  <div id="otherGoal">
-    <input type="text" id="customGoal" placeholder="اكتب هدفك هنا">
+  <div class="other-input">
+    <input type="text" placeholder="اكتب هدفك هنا">
   </div>
 
   <br>
-  <button onclick="goNext()">التالي</button>
 
-  <script>
-    let selectedGoal = '';
-
-    function selectGoal(goal) {
-      selectedGoal = goal;
-      document.getElementById("customGoal").style.display = "none";
-      alert("تم اختيار: " + goal);
-    }
-
-    function showOther() {
-      selectedGoal = '';
-      document.getElementById("customGoal").style.display = "block";
-    }
-
-    function goNext() {
-      if(document.getElementById("customGoal").style.display === "block") {
-        selectedGoal = document.getElementById("customGoal").value;
-      }
-      if(selectedGoal === '') {
-        alert("من فضلك اختر أو اكتب هدفك أولاً.");
-      } else {
-        alert("رائع! هدفك: " + selectedGoal);
-        // هنا ممكن ننقله لصفحة أخرى أو نحفظ الهدف
-        window.location.href = "index.html";
-      }
-    }
-  </script>
+  <a href="result.html" class="btn-next">التالي</a>
 
 </body>
 </html>
