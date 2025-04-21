@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>مستقبلي الآن</title>
+  <style>
+    body {
+      margin: 0;
+      background: url('https://alhayaa.net/wp-content/uploads/2024/12/sky-background.jpg') no-repeat center center fixed;
+      background-size: cover;
+      overflow: hidden;
+      color: white;
+      font-family: 'Cairo', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    h1 {
+      font-size: 50px;
+      background: linear-gradient(45deg, #6A1B9A, #F48FB1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 30px;
+    }
+    .start-btn {
+      background: linear-gradient(45deg, #F48FB1, #6A1B9A);
+      color: white;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 30px;
+      font-size: 24px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .start-btn:hover {
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+  <h1>مستقبلي الآن</h1>
+  <button class="start-btn" onclick="goToGoals()">ابدأ</button>
+
+  <script>
+    function goToGoals() {
+      window.location.href = "goals.html";
+    }
+  </script>
+</body>
+</html>
