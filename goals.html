@@ -2,123 +2,109 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <title>اختيار الهدف — مستقبلي الآن</title>
+  <title>اختيار الهدف - مستقبلي الآن</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@600&display=swap');
-
     body {
-      background-color: #0a0a23;
-      color: #fff;
-      font-family: 'Cairo', sans-serif;
-      text-align: center;
-      padding: 50px;
       margin: 0;
-      overflow: hidden;
-    }
-
-    h1 {
-      font-size: 45px;
-      margin-bottom: 40px;
-      color: #ffd700;
-      animation: fadeIn 2s ease;
-    }
-
-    .option {
-      background-color: #ffd700;
-      color: #0a0a23;
-      padding: 15px 25px;
-      margin: 10px;
-      border: none;
-      border-radius: 10px;
-      font-size: 22px;
-      cursor: pointer;
-      animation: fadeIn 3s ease;
-      transition: 0.3s;
-    }
-
-    .option:hover {
-      background-color: #ffcc00;
-      transform: scale(1.05);
-    }
-
-    .other-input {
-      margin-top: 20px;
-      animation: fadeIn 3.5s ease;
-    }
-
-    .other-input input {
-      padding: 12px;
-      font-size: 20px;
-      border-radius: 10px;
-      border: none;
-      outline: none;
-      width: 250px;
+      font-family: 'Cairo', sans-serif;
+      color: #fff;
       text-align: center;
+      background-color: black;
     }
 
-    .btn-next {
-      background-color: #ffd700;
-      color: #0a0a23;
-      padding: 15px 35px;
-      margin-top: 40px;
-      border: none;
-      border-radius: 10px;
-      font-size: 22px;
-      cursor: pointer;
-      animation: fadeIn 4s ease;
-    }
-
-    .btn-next:hover {
-      background-color: #ffcc00;
-      transform: scale(1.05);
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* خلفية نجوم */
     .stars {
       position: fixed;
       width: 100%;
       height: 100%;
       top: 0; left: 0;
-      background: url('https://i.postimg.cc/D0wVK7ZB/stars-bg.png') repeat;
+      background: url('https://i.ibb.co/VDCWDzw/stars-bg.png') repeat;
       animation: moveStars 100s linear infinite;
       z-index: -1;
     }
 
     @keyframes moveStars {
       from {background-position: 0 0;}
-      to {background-position: 10000px 5000px;}
+      to {background-position: -10000px 5000px;}
+    }
+
+    h1 {
+      margin-top: 50px;
+      font-size: 36px;
+      color: #FFD700;
+    }
+
+    .buttons {
+      margin: 30px auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      max-width: 600px;
+    }
+
+    .buttons button {
+      background: #FF9800;
+      border: none;
+      padding: 15px 30px;
+      font-size: 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .buttons button:hover {
+      background: #FFC107;
+    }
+
+    input[type="text"] {
+      padding: 15px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      margin-top: 20px;
+      width: 250px;
+    }
+
+    .next-button {
+      display: block;
+      margin: 30px auto;
+      padding: 15px 40px;
+      background: #FF9800;
+      border: none;
+      border-radius: 8px;
+      font-size: 20px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .next-button:hover {
+      background: #FFC107;
     }
 
   </style>
 </head>
 <body>
 
-<div class="stars"></div>
+  <div class="stars"></div>
 
   <h1>اختر هدفك</h1>
 
-  <button class="option">الصحة</button>
-  <button class="option">النجاح الدراسي</button>
-  <button class="option">تنمية الذات</button>
-  <button class="option">العلاقات</button>
-  <button class="option">السفر</button>
-  <button class="option">العمل</button>
-  <button class="option">الادخار</button>
-  <button class="option">الاستقرار</button>
-  <button class="option">السعادة</button>
-
-  <div class="other-input">
-    <input type="text" placeholder="اكتب هدفك هنا">
+  <div class="buttons">
+    <button>الصحة</button>
+    <button>النجاح الدراسي</button>
+    <button>تنمية الذات</button>
+    <button>العلاقات</button>
+    <button>السفر</button>
+    <button>العمل</button>
+    <button>الإدخار</button>
+    <button>الإستقرار</button>
+    <button>السعادة</button>
+    <button>آخر</button>
   </div>
 
-  <br>
+  <input type="text" placeholder="اكتب هدفك هنا">
 
-  <a href="result.html" class="btn-next">التالي</a>
+  <button class="next-button">التالي</button>
 
 </body>
 </html>
