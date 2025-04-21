@@ -2,33 +2,83 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Choose Your Goal</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Select Your Goal</title>
+  <style>
+    body {
+      background-color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      color: #333;
+      margin-top: 50px;
+    }
+
+    .buttons {
+      margin-top: 50px;
+    }
+
+    button {
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      margin: 10px;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    input[type="text"] {
+      padding: 12px;
+      width: 200px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <h2>Choose your goal:</h2>
+
+  <h1>Select Your Goal</h1>
+
+  <div class="buttons">
+    <button onclick="selectGoal('Doctor')">Doctor</button>
+    <button onclick="selectGoal('Engineer')">Engineer</button>
     <button onclick="selectGoal('Athlete')">Athlete</button>
-    <button onclick="selectGoal('Entrepreneur')">Entrepreneur</button>
     <button onclick="selectGoal('Other')">Other</button>
-    <input type="text" id="customGoal" placeholder="Write your goal here">
-    <button onclick="goToDetails()">Next</button>
+    <br>
+    <input type="text" id="customGoal" placeholder="Type your goal here" style="display:none;">
   </div>
 
   <script>
     function selectGoal(goal) {
-      document.getElementById("customGoal").value = goal;
-    }
-
-    function goToDetails() {
-      const goal = document.getElementById("customGoal").value;
-      if (goal.trim() === "") {
-        alert("Please select your goal.");
+      if (goal === 'Other') {
+        document.getElementById('customGoal').style.display = 'block';
+        document.getElementById('customGoal').focus();
       } else {
-        localStorage.setItem("goal", goal);
-        window.location.href = "details.html";
+        window.location.href = 'details.html?goal=' + encodeURIComponent(goal);
       }
     }
+
+    document.getElementById('customGoal').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') {
+        const customGoal = document.getElementById('customGoal').value.trim();
+        if (customGoal) {
+          window.location.href = 'details.html?goal=' + encodeURIComponent(customGoal);
+        }
+      }
+    });
   </script>
+
 </body>
 </html>
