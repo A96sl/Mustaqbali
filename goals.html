@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>أهدافك</title>
+  <style>
+    body {
+      margin: 0;
+      background: url('https://alhayaa.net/wp-content/uploads/2024/12/sky-background.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      font-family: 'Cairo', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    h2 {
+      font-size: 40px;
+      margin-bottom: 20px;
+      background: linear-gradient(45deg, #6A1B9A, #F48FB1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    select, input, button {
+      padding: 12px 20px;
+      margin: 10px;
+      font-size: 18px;
+      border-radius: 20px;
+      border: none;
+      outline: none;
+    }
+    .custom-goal {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+    }
+    .btn {
+      background: linear-gradient(45deg, #F48FB1, #6A1B9A);
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .btn:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+  <h2>اختر هدفك</h2>
+
+  <select id="goalSelect" onchange="checkCustomOption()">
+    <option value="">اختر...</option>
+    <option value="النجاح">النجاح</option>
+    <option value="الصحة">الصحة</option>
+    <option value="السعادة">السعادة</option>
+    <option value="آخر">آخر...</option>
+  </select>
+
+  <div class="custom-goal" id="customGoalDiv">
+    <input type="text" id="customGoalInput" placeholder="اكتب هدفك هنا">
+  </div>
+
+  <button class="btn" onclick="submitGoal()">متابعة</button>
+
+  <script>
+    function checkCustomOption() {
+      const select = document.getElementById('goalSelect');
+      const customDiv = document.getElementById('customGoalDiv');
+      if (select.value === "آخر") {
+        customDiv.style.display = "flex";
+      } else {
+        customDiv.style.display = "none";
+      }
+    }
+
+    function submitGoal() {
+      const select = document.getElementById('goalSelect');
+      const customInput = document.getElementById('customGoalInput');
+      let goal = select.value;
+      if (goal === "آخر") {
+        goal = customInput.value;
+      }
+      if (goal) {
+        alert("هدفك هو: " + goal);
+        // أو يمكنك تحويله لصفحة أخرى لاحقًا
+      } else {
+        alert("رجاءً اختر أو اكتب هدفك!");
+      }
+    }
+  </script>
+
+</body>
+</html>
