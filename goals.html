@@ -41,6 +41,7 @@
       border: 1px solid #ccc;
       border-radius: 6px;
       font-size: 18px;
+      text-align: center;
     }
 
     .next-button {
@@ -66,22 +67,28 @@
   <h1>اختر هدفك</h1>
 
   <div>
-    <button class="goal-button">الصحة</button>
-    <button class="goal-button">النجاح الدراسي</button>
-    <button class="goal-button">تنمية الذات</button>
-    <button class="goal-button">العلاقات</button>
-    <button class="goal-button">السفر</button>
-    <button class="goal-button">العمل</button>
-    <button class="goal-button">الادخار</button>
-    <button class="goal-button">الإستقرار</button>
-    <button class="goal-button">السعادة</button>
+    <button class="goal-button" onclick="setGoal('الصحة')">الصحة</button>
+    <button class="goal-button" onclick="setGoal('النجاح الدراسي')">النجاح الدراسي</button>
+    <button class="goal-button" onclick="setGoal('تنمية الذات')">تنمية الذات</button>
+    <button class="goal-button" onclick="setGoal('العلاقات')">العلاقات</button>
+    <button class="goal-button" onclick="setGoal('السفر')">السفر</button>
+    <button class="goal-button" onclick="setGoal('العمل')">العمل</button>
+    <button class="goal-button" onclick="setGoal('الادخار')">الادخار</button>
+    <button class="goal-button" onclick="setGoal('الإستقرار')">الإستقرار</button>
+    <button class="goal-button" onclick="setGoal('السعادة')">السعادة</button>
   </div>
 
   <div>
-    <input type="text" class="custom-goal" placeholder="أكتب هدفك هنا">
+    <input type="text" class="custom-goal" id="goalInput" placeholder="أكتب هدفك هنا">
   </div>
 
   <button class="next-button">التالي</button>
+
+  <script>
+    function setGoal(goal) {
+      document.getElementById('goalInput').value = goal;
+    }
+  </script>
 
 </body>
 </html>
