@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>معلوماتك الشخصية</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Cairo', sans-serif;
+      background-color: white;
+      text-align: center;
+      color: #333;
+    }
+
+    h1 {
+      margin-top: 30px;
+      font-size: 36px;
+      color: #007BFF;
+    }
+
+    input, label {
+      display: block;
+      margin: 15px auto;
+      font-size: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      width: 250px;
+    }
+
+    input[type="file"] {
+      border: none;
+    }
+
+    .next-button {
+      margin-top: 30px;
+      padding: 15px 50px;
+      background: #007BFF;
+      border: none;
+      border-radius: 8px;
+      font-size: 22px;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .next-button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>معلوماتك الشخصية</h1>
+
+  <label>اسمك:</label>
+  <input type="text" id="userName" placeholder="اكتب اسمك هنا">
+
+  <label>تاريخ ميلادك:</label>
+  <input type="date" id="birthDate">
+
+  <label>ارفع صورتك (وجه واضح):</label>
+  <input type="file" id="userImage" accept="image/*">
+
+  <button class="next-button" onclick="goToResult()">التالي</button>
+
+  <script>
+    function goToResult() {
+      const name = document.getElementById('userName').value;
+      const birthDate = document.getElementById('birthDate').value;
+      const imageFile = document.getElementById('userImage').files[0];
+
+      if (!name  !birthDate  !imageFile) {
+        alert('رجاءً املأ جميع البيانات وارفع صورة!');
+        return;
+      }
+
+      // حفظ البيانات في sessionStorage
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        sessionStorage.setItem("userName", name);
+        sessionStorage.setItem("birthDate", birthDate);
+        sessionStorage.setItem("userImage", e.target.result);
+        window.location.href = "result.html";
+      };
+      reader.readAsDataURL(imageFile);
+    }
+  </script>
+
+</body>
+</html>
